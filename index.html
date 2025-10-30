@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./style.css">
+  <title>Registration Form</title>
+</head>
+
+<body>
+
+  <form>
+    <input type="text" placeholder="Name">
+    <input type="text" placeholder="Surname">
+    <input type="number" placeholder="Age">
+    <input type="text" placeholder="Address">
+    <input type="number" placeholder="CAP">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <div class="d-flex align-items-center gap-2">
+      <input class="checkbox-input" type="checkbox" id="isMarried">
+      <label for="isMarried">Married</label>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <input class="checkbox-input" type="checkbox" id="isActive">
+      <label for="isActive">Active</label>
+    </div>
+    <button class="btn btn-info" id="submit-button" type="submit">Submit</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+    <script src="./main.js"></script>
+
+</body>
+
+</html>

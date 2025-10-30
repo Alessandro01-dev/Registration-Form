@@ -1,0 +1,21 @@
+body {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  height: 100vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+}
+
+form input {
+  height: 32px;
+}
+
+.checkbox-input {
+  height: 12px;
+}
