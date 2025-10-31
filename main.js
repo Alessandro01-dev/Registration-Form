@@ -41,7 +41,9 @@ const returnNewUserObjFromInputValues = () => {
 
 const validateName = () => {
 
-  if (firstNameFormInput.value.trim() === "") {
+  const validName = /^[A-Z][a-zA-Z '.-]*[A-Za-z][^-]$/
+
+  if (firstNameFormInput.value.trim() === "" || !validName.test(firstNameFormInput.value.trim())) {
     firstNameFormInputInvalidFeedback.classList.remove("d-none")
     firstNameFormInput.classList.add("is-invalid")
     return false
@@ -58,7 +60,9 @@ firstNameFormInput.addEventListener("input", validateName)
 
 const validateSurname = () => {
 
-  if (surnameFormInput.value.trim() === "") {
+  const validSurname = /^[A-Z][a-zA-Z '.-]*[A-Za-z][^-]$/
+
+  if (surnameFormInput.value.trim() === "" || !validSurname.test(surnameFormInput.value.trim())) {
     surnameFormInputInvalidFeedback.classList.remove("d-none")
     surnameFormInput.classList.add("is-invalid")
     return false
@@ -75,7 +79,7 @@ surnameFormInput.addEventListener("input", validateSurname)
 
 const validateAge = () => {
 
-  if (ageFormInput.value.trim() === "") {
+  if (ageFormInput.value.trim() === "" || !Number(ageFormInput.value.trim()) || Number(ageFormInput.value.trim()) > 150 || Number(ageFormInput.value.trim() < 0)) {
     ageFormInputInvalidFeedback.classList.remove("d-none")
     ageFormInput.classList.add("is-invalid")
     return false
@@ -92,7 +96,9 @@ ageFormInput.addEventListener("input", validateAge)
 
 const validateAddress = () => {
 
-  if (addressFormInput.value.trim() === "") {
+  const validAddress = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s.,'°\-\/]{5,100}$/
+
+  if (addressFormInput.value.trim() === "" || !validAddress.test(addressFormInput.value.trim())) {
     addressFormInputInvalidFeedback.classList.remove("d-none")
     addressFormInput.classList.add("is-invalid")
     return false
@@ -109,7 +115,9 @@ addressFormInput.addEventListener("input", validateAddress)
 
 const validateCap = () => {
 
-  if (capFormInput.value.trim() === "") {
+  const validItalianZipCode = /^[0-9]{5}$/
+
+  if (capFormInput.value.trim() === "" || !validItalianZipCode.test(capFormInput.value.trim())) {
     capFormInputInvalidFeedback.classList.remove("d-none")
     capFormInput.classList.add("is-invalid")
     return false
@@ -126,9 +134,9 @@ capFormInput.addEventListener("input", validateCap)
 
 const validateEmail = () => {
 
-  const isValidEmail = emailFormInput.value.includes("@")
+  const validEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-  if (emailFormInput.value.trim() === "" || !isValidEmail) {
+  if (emailFormInput.value.trim() === "" || !validEmail.test(emailFormInput.value.trim())) {
     emailFormInputInvalidFeedback.classList.remove("d-none")
     emailFormInput.classList.add("is-invalid")
     return false
@@ -143,9 +151,11 @@ const validateEmail = () => {
 
 emailFormInput.addEventListener("input", validateEmail)
 
+const validPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+
 const validatePassword = () => {
 
-  if (passwordFormInput.value.trim() === "") {
+  if (passwordFormInput.value.trim() === "" || !validPassword.test(passwordFormInput.value.trim())) {
     passwordFormInputInvalidFeedback.classList.remove("d-none")
     passwordFormInput.classList.add("is-invalid")
     return false
@@ -159,8 +169,6 @@ const validatePassword = () => {
 }
 
 passwordFormInput.addEventListener("input", validatePassword)
-
-
 
 submitFormButton.addEventListener("submit", (e) => {
   e.preventDefault()
