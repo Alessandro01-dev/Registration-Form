@@ -13,30 +13,81 @@
 
 <body>
 
-  <form>
-    <input type="text" placeholder="Name">
-    <input type="text" placeholder="Surname">
-    <input type="number" placeholder="Age">
-    <input type="text" placeholder="Address">
-    <input type="number" placeholder="CAP">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
-    <div class="d-flex align-items-center gap-2">
-      <input class="checkbox-input" type="checkbox" id="isMarried">
-      <label for="isMarried">Married</label>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="mb-4">Registration Form</h1>
+      </div>
     </div>
-    <div class="d-flex align-items-center gap-2">
-      <input class="checkbox-input" type="checkbox" id="isActive">
-      <label for="isActive">Active</label>
+    <div class="row">
+      <div class="col">
+        <form>
+          <div class="first-name-container d-flex flex-column align-items-start">
+            <label for="first-name">First Name</label>
+            <input class="form-control" id="first-name" type="text" placeholder="Name">
+            <div class="invalid-feedback text-start d-none" id="first-name-invalid-feedback">Example invalid feedback text</div>
+          </div>
+
+          <div class="surname-container d-flex flex-column align-items-start">
+            <label for="surname">Surname</label>
+            <input class="form-control" id="surname" type="text" placeholder="Surname">
+            <div class="invalid-feedback text-start d-none" id="surname-invalid-feedback">Example invalid feedback text</div>
+          </div>
+
+          <div class="age-container d-flex flex-column align-items-start">
+            <label for="age">Age</label>
+            <input class="form-control" id="age" type="text" placeholder="Age">
+            <div class="invalid-feedback text-start d-none" id="age-invalid-feedback">Example invalid feedback text</div>
+          </div>
+
+          <div class="address-container d-flex flex-column align-items-start">
+            <label for="address">Address</label>
+            <input class="form-control" id="address" type="text" placeholder="Address">
+            <div class="invalid-feedback text-start d-none" id="address-invalid-feedback">Example invalid feedback text</div>
+          </div>
+
+          <div class="age-container d-flex flex-column align-items-start">
+            <label for="cap">CAP</label>
+            <input class="form-control" id="cap" type="text" placeholder="CAP">
+            <div class="invalid-feedback text-start d-none" id="cap-invalid-feedback">Example invalid feedback text</div>
+          </div>
+
+          <div class="address-container d-flex flex-column align-items-start">
+            <label for="email">E-mail</label>
+            <input class="form-control" id="email" type="email" placeholder="E-mail">
+            <div class="invalid-feedback text-start d-none" id="email-invalid-feedback">Example invalid feedback text</div>
+          </div>
+
+          <div class="address-container d-flex flex-column align-items-start">
+            <label for="password">Password</label>
+            <input class="form-control" id="password" type="password" placeholder="Password">
+            <div class="invalid-feedback text-start d-none" id="password-invalid-feedback">Example invalid feedback text</div>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <input class="checkbox-input" type="checkbox" id="is-married">
+            <label for="is-married">Married</label>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <input class="checkbox-input" type="checkbox" id="is-active">
+            <label for="is-active">Active</label>
+          </div>
+          <button class="btn btn-info" id="submit-button" type="submit">Submit</button>
+        </form>
+      </div>
     </div>
-    <button class="btn btn-info" id="submit-button" type="submit">Submit</button>
-  </form>
+  </div>
+
+
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
 
-    <script src="./main.js"></script>
+  <script src="./main.js"></script>
 
 </body>
 
