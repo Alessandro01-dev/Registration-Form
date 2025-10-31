@@ -41,10 +41,17 @@ const returnNewUserObjFromInputValues = () => {
 
 const validateName = () => {
 
+  const nameInputValue = firstNameFormInput.value.trim()
   const validName = /^[A-Z][a-zA-Z '.-]*[A-Za-z][^-]$/
 
-  if (firstNameFormInput.value.trim() === "" || !validName.test(firstNameFormInput.value.trim())) {
+  if (nameInputValue === "") {
     firstNameFormInputInvalidFeedback.classList.remove("d-none")
+    firstNameFormInputInvalidFeedback.innerText = "This field is mandatory and must contain a message."
+    firstNameFormInput.classList.add("is-invalid")
+    return false
+  } else if (!validName.test(nameInputValue)) {
+    firstNameFormInputInvalidFeedback.classList.remove("d-none")
+    firstNameFormInputInvalidFeedback.innerText = `${firstNameFormInput.value} is not a valid name.`
     firstNameFormInput.classList.add("is-invalid")
     return false
   } else {
@@ -60,10 +67,17 @@ firstNameFormInput.addEventListener("input", validateName)
 
 const validateSurname = () => {
 
+  const surnameInputValue = surnameFormInput.value.trim()
   const validSurname = /^[A-Z][a-zA-Z '.-]*[A-Za-z][^-]$/
 
-  if (surnameFormInput.value.trim() === "" || !validSurname.test(surnameFormInput.value.trim())) {
+  if (surnameInputValue === "") {
     surnameFormInputInvalidFeedback.classList.remove("d-none")
+    surnameFormInputInvalidFeedback.innerText = "This field is mandatory and must contain a message."
+    surnameFormInput.classList.add("is-invalid")
+    return false
+  } else if (!validSurname.test(surnameInputValue)) {
+    surnameFormInputInvalidFeedback.classList.remove("d-none")
+    surnameFormInputInvalidFeedback.innerText = `${surnameFormInput.value} is not a valid surname.`
     surnameFormInput.classList.add("is-invalid")
     return false
   } else {
@@ -79,8 +93,16 @@ surnameFormInput.addEventListener("input", validateSurname)
 
 const validateAge = () => {
 
-  if (ageFormInput.value.trim() === "" || !Number(ageFormInput.value.trim()) || Number(ageFormInput.value.trim()) > 150 || Number(ageFormInput.value.trim() < 0)) {
+  const ageInputValue = ageFormInput.value.trim()
+
+  if (ageInputValue === "") {
     ageFormInputInvalidFeedback.classList.remove("d-none")
+    ageFormInputInvalidFeedback.innerText = "This field is mandatory and must contain a message."
+    ageFormInput.classList.add("is-invalid")
+    return false
+  } else if (!Number(ageInputValue) || Number(ageInputValue) > 150 || Number(ageInputValue) < 0) {
+    ageFormInputInvalidFeedback.classList.remove("d-none")
+    ageFormInputInvalidFeedback.innerText = `${ageFormInput.value} is not a valid age.`
     ageFormInput.classList.add("is-invalid")
     return false
   } else {
@@ -96,10 +118,17 @@ ageFormInput.addEventListener("input", validateAge)
 
 const validateAddress = () => {
 
+  const addressInputValue = addressFormInput.value.trim()
   const validAddress = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s.,'°\-\/]{5,100}$/
 
-  if (addressFormInput.value.trim() === "" || !validAddress.test(addressFormInput.value.trim())) {
+  if (addressInputValue === "") {
     addressFormInputInvalidFeedback.classList.remove("d-none")
+    addressFormInputInvalidFeedback.innerText = "This field is mandatory and must contain a message."
+    addressFormInput.classList.add("is-invalid")
+    return false
+  } else if (!validAddress.test(addressInputValue)) {
+    addressFormInputInvalidFeedback.classList.remove("d-none")
+    addressFormInputInvalidFeedback.innerText = `${addressFormInput.value} is not a valid address.`
     addressFormInput.classList.add("is-invalid")
     return false
   } else {
@@ -115,10 +144,17 @@ addressFormInput.addEventListener("input", validateAddress)
 
 const validateCap = () => {
 
+  const capInputValue = capFormInput.value.trim()
   const validItalianZipCode = /^[0-9]{5}$/
 
-  if (capFormInput.value.trim() === "" || !validItalianZipCode.test(capFormInput.value.trim())) {
+  if (capInputValue === "") {
     capFormInputInvalidFeedback.classList.remove("d-none")
+    capFormInputInvalidFeedback.innerText = "This field is mandatory and must contain a message."
+    capFormInput.classList.add("is-invalid")
+    return false
+  } else if (!validItalianZipCode.test(capInputValue)) {
+    capFormInputInvalidFeedback.classList.remove("d-none")
+    capFormInputInvalidFeedback.innerText = `${capFormInput.value} is not a valid cap.`
     capFormInput.classList.add("is-invalid")
     return false
   } else {
@@ -134,10 +170,17 @@ capFormInput.addEventListener("input", validateCap)
 
 const validateEmail = () => {
 
+  const emailInputValue = emailFormInput.value.trim()
   const validEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-  if (emailFormInput.value.trim() === "" || !validEmail.test(emailFormInput.value.trim())) {
+  if (emailInputValue === "") {
     emailFormInputInvalidFeedback.classList.remove("d-none")
+    emailFormInputInvalidFeedback.innerText = "This field is mandatory and must contain a message."
+    emailFormInput.classList.add("is-invalid")
+    return false
+  } else if (!validEmail.test(emailInputValue)) {
+    emailFormInputInvalidFeedback.classList.remove("d-none")
+    emailFormInputInvalidFeedback.innerText = `${emailFormInput.value} is not a valid email.`
     emailFormInput.classList.add("is-invalid")
     return false
   } else {
@@ -151,15 +194,22 @@ const validateEmail = () => {
 
 emailFormInput.addEventListener("input", validateEmail)
 
-const validPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-
 const validatePassword = () => {
 
-  if (passwordFormInput.value.trim() === "" || !validPassword.test(passwordFormInput.value.trim())) {
+  const passwordInputValue = passwordFormInput.value.trim()
+  const validPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+
+  if (passwordInputValue === "") {
     passwordFormInputInvalidFeedback.classList.remove("d-none")
+    passwordFormInputInvalidFeedback.innerText = "This field is mandatory and must contain a message."
     passwordFormInput.classList.add("is-invalid")
     return false
-  } else {
+  } else if (!validPassword.test(passwordInputValue)) {
+    passwordFormInputInvalidFeedback.classList.remove("d-none")
+    passwordFormInputInvalidFeedback.innerText = "The password must minimum eight characters, at least one letter, one number and one special character (@$!%*#?&)"
+    passwordFormInput.classList.add("is-invalid")
+    return false
+  } {
     passwordFormInputInvalidFeedback.classList.add("d-none")
     passwordFormInput.classList.remove("is-invalid")
     passwordFormInput.classList.add("is-valid")
