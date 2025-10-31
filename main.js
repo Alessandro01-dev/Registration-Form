@@ -100,7 +100,7 @@ const validateAge = () => {
     ageFormInputInvalidFeedback.innerText = "This field is mandatory and must contain a message."
     ageFormInput.classList.add("is-invalid")
     return false
-  } else if (!Number(ageInputValue) || Number(ageInputValue) > 150 || Number(ageInputValue) < 0) {
+  } else if (isNaN(ageInputValue) || Number(ageInputValue) > 150 || Number(ageInputValue) < 0) {
     ageFormInputInvalidFeedback.classList.remove("d-none")
     ageFormInputInvalidFeedback.innerText = `${ageFormInput.value} is not a valid age.`
     ageFormInput.classList.add("is-invalid")
@@ -206,10 +206,10 @@ const validatePassword = () => {
     return false
   } else if (!validPassword.test(passwordInputValue)) {
     passwordFormInputInvalidFeedback.classList.remove("d-none")
-    passwordFormInputInvalidFeedback.innerText = "The password must minimum eight characters, at least one letter, one number and one special character (@$!%*#?&)"
+    passwordFormInputInvalidFeedback.innerText = "The password must have minimum eight characters, at least one letter, one number and one special character (@$!%*#?&)"
     passwordFormInput.classList.add("is-invalid")
     return false
-  } {
+  } else {
     passwordFormInputInvalidFeedback.classList.add("d-none")
     passwordFormInput.classList.remove("is-invalid")
     passwordFormInput.classList.add("is-valid")
@@ -220,15 +220,19 @@ const validatePassword = () => {
 
 passwordFormInput.addEventListener("input", validatePassword)
 
-submitFormButton.addEventListener("submit", (e) => {
-  e.preventDefault()
+const validateForm = () => {
 
-  returnNewUserObjFromInputValues()
+  if (validateName() && validateSurname() && validateAge() && validateAddress() && validateCap() && validateEmail() && validatePassword()) {
 
-  addUser(newUserObj)
-    .then(res => console.log(res))
-})
+    return true
 
+  } else {
+
+    return false
+
+  }
+
+}
 
 const addUser = async (obj) => {
   try {
@@ -245,3 +249,23 @@ const addUser = async (obj) => {
     console.log(e)
   }
 }
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault()
+
+  if (validateForm()) {
+
+    returnNewUserObjFromInputValues()
+
+    let newUsers = JSON.parse(localStorage.getItem("newUsers")) || [];
+    newUsers.push(newUserObj);
+    localStorage.setItem("newUsers", JSON.stringify(newUsers));
+
+    await addUser(newUserObj)
+      .then(res => console.log(res))
+
+    form.reset()
+
+  }
+
+})
